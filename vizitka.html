@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Елена Ковалева — Digital Marketing & AI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;
+    cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='%2300f0ff' stroke-width='1.5' opacity='.7'/%3E%3Ccircle cx='12' cy='12' r='3' fill='%2300f0ff'/%3E%3Cline x1='12' y1='0' x2='12' y2='6' stroke='%2300f0ff' stroke-width='1'/%3E%3Cline x1='12' y1='18' x2='12' y2='24' stroke='%2300f0ff' stroke-width='1'/%3E%3Cline x1='0' y1='12' x2='6' y2='12' stroke='%2300f0ff' stroke-width='1'/%3E%3Cline x1='18' y1='12' x2='24' y2='12' stroke='%2300f0ff' stroke-width='1'/%3E%3C/svg%3E") 12 12,crosshair;
+  }
+
+  a,.cta,.spec,.social-link{
+    cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='12' fill='none' stroke='%23ff00e5' stroke-width='1.5' opacity='.8'/%3E%3Ccircle cx='14' cy='14' r='5' fill='%23ff00e5' opacity='.6'/%3E%3Cline x1='14' y1='0' x2='14' y2='7' stroke='%23ff00e5' stroke-width='1'/%3E%3Cline x1='14' y1='21' x2='14' y2='28' stroke='%23ff00e5' stroke-width='1'/%3E%3Cline x1='0' y1='14' x2='7' y2='14' stroke='%23ff00e5' stroke-width='1'/%3E%3Cline x1='21' y1='14' x2='28' y2='14' stroke='%23ff00e5' stroke-width='1'/%3E%3C/svg%3E") 14 14,pointer;
+  }
+
+  :root{
+    --cyan:#00f0ff;--magenta:#ff00e5;--neon-green:#39ff14;--gold:#ffd700;--gold-dim:#b8860b;
+    --dark:#050510;--card-bg:rgba(8,8,30,.85);
+  }
+
+  body{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(ellipse at 20% 0%,rgba(0,240,255,.08) 0%,transparent 50%),
+      radial-gradient(ellipse at 80% 100%,rgba(255,0,229,.08) 0%,transparent 50%),
+      radial-gradient(ellipse at 50% 50%,rgba(57,255,20,.04) 0%,transparent 60%),
+      linear-gradient(180deg,#06001a 0%,#0a0020 25%,#0d0a2a 50%,#0a001f 75%,#030012 100%);
+    font-family:'Rajdhani','Segoe UI',sans-serif;color:#fff;
+    overflow-x:hidden;
+  }
+
+  /* === ANIMATED GRID BACKGROUND === */
+  .cyber-bg{position:fixed;inset:0;z-index:0;overflow:hidden}
+
+  /* city skyline silhouette */
+  .skyline{
+    position:absolute;bottom:0;left:0;width:100%;height:45%;z-index:1;
+    background:
+      /* tall buildings */
+      linear-gradient(to top,#0a0020 0%,transparent 100%),
+      /* building shapes via repeating gradients */
+      linear-gradient(90deg,
+        transparent 2%,rgba(0,240,255,.02) 2%,rgba(0,240,255,.02) 3.5%,transparent 3.5%,
+        transparent 6%,rgba(255,0,229,.015) 6%,rgba(255,0,229,.015) 8%,transparent 8%,
+        transparent 12%,rgba(0,240,255,.02) 12%,rgba(0,240,255,.02) 14.5%,transparent 14.5%,
+        transparent 18%,rgba(0,240,255,.025) 18%,rgba(0,240,255,.025) 19%,transparent 19%,
+        transparent 23%,rgba(255,0,229,.02) 23%,rgba(255,0,229,.02) 26%,transparent 26%,
+        transparent 30%,rgba(0,240,255,.015) 30%,rgba(0,240,255,.015) 31.5%,transparent 31.5%,
+        transparent 35%,rgba(0,240,255,.025) 35%,rgba(0,240,255,.025) 38%,transparent 38%,
+        transparent 42%,rgba(255,0,229,.02) 42%,rgba(255,0,229,.02) 43%,transparent 43%,
+        transparent 48%,rgba(0,240,255,.02) 48%,rgba(0,240,255,.02) 51%,transparent 51%,
+        transparent 55%,rgba(255,0,229,.015) 55%,rgba(255,0,229,.015) 56.5%,transparent 56.5%,
+        transparent 60%,rgba(0,240,255,.025) 60%,rgba(0,240,255,.025) 63%,transparent 63%,
+        transparent 67%,rgba(0,240,255,.02) 67%,rgba(0,240,255,.02) 68.5%,transparent 68.5%,
+        transparent 72%,rgba(255,0,229,.02) 72%,rgba(255,0,229,.02) 75%,transparent 75%,
+        transparent 80%,rgba(0,240,255,.015) 80%,rgba(0,240,255,.015) 81%,transparent 81%,
+        transparent 85%,rgba(0,240,255,.025) 85%,rgba(0,240,255,.025) 88%,transparent 88%,
+        transparent 93%,rgba(255,0,229,.02) 93%,rgba(255,0,229,.02) 95%,transparent 95%
+      );
+  }
+
+  /* neon horizon line */
+  .horizon{
+    position:absolute;bottom:44%;left:0;width:100%;height:2px;z-index:2;
+    background:linear-gradient(90deg,transparent 5%,var(--cyan) 30%,var(--magenta) 70%,transparent 95%);
+    opacity:.25;
+    box-shadow:0 0 30px rgba(0,240,255,.3),0 0 60px rgba(255,0,229,.2);
+  }
+
+  .cyber-bg::before{
+    content:'';position:absolute;inset:0;
+    background:
+      linear-gradient(rgba(0,240,255,.03) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(0,240,255,.03) 1px,transparent 1px);
+    background-size:60px 60px;
+    animation:gridMove 20s linear infinite;
+  }
+  @keyframes gridMove{
+    0%{transform:perspective(500px) rotateX(60deg) translateY(0)}
+    100%{transform:perspective(500px) rotateX(60deg) translateY(60px)}
+  }
+  .cyber-bg::after{
+    content:'';position:absolute;inset:0;z-index:2;
+    background:radial-gradient(ellipse at 50% 40%,transparent 20%,rgba(5,1,26,.7) 70%);
+    pointer-events:none;
+  }
+
+  /* floating neon orbs */
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;z-index:3;animation:orbFloat 15s infinite ease-in-out}
+  .orb-1{width:500px;height:500px;top:-15%;left:-10%;background:var(--cyan);animation-delay:0s}
+  .orb-2{width:400px;height:400px;bottom:-10%;right:-10%;background:var(--magenta);animation-delay:5s}
+  .orb-3{width:300px;height:300px;top:50%;left:60%;background:var(--neon-green);animation-delay:10s;opacity:.08}
+  .orb-4{width:450px;height:450px;top:20%;right:15%;background:var(--gold);animation-delay:2s;opacity:.12;filter:blur(100px)}
+  .orb-5{width:250px;height:250px;bottom:25%;left:25%;background:var(--gold-dim);animation-delay:8s;opacity:.12;filter:blur(90px)}
+
+  /* gold abstract shapes */
+  .gold-shape{position:absolute;z-index:4;opacity:0;animation:goldFade 8s infinite ease-in-out}
+  .gold-shape svg{width:100%;height:100%}
+  .gold-1{width:320px;height:320px;top:5%;right:5%;animation-delay:0s}
+  .gold-2{width:260px;height:260px;bottom:10%;left:8%;animation-delay:4s}
+  .gold-3{width:200px;height:200px;top:45%;left:45%;animation-delay:2s}
+  @keyframes goldFade{
+    0%,100%{opacity:0;transform:rotate(0deg) scale(.8)}
+    50%{opacity:.25;transform:rotate(45deg) scale(1.1)}
+  }
+
+  /* gold particles */
+  .gold-particle{
+    position:absolute;border-radius:50%;background:var(--gold);z-index:4;
+    animation:particleUp 6s infinite ease-in;
+  }
+  .gp1{width:3px;height:3px;left:15%;bottom:30%;animation-delay:0s;opacity:.6}
+  .gp2{width:2px;height:2px;left:35%;bottom:20%;animation-delay:1.2s;opacity:.5}
+  .gp3{width:4px;height:4px;left:55%;bottom:40%;animation-delay:2.5s;opacity:.7}
+  .gp4{width:2px;height:2px;left:72%;bottom:25%;animation-delay:3.8s;opacity:.5}
+  .gp5{width:3px;height:3px;left:88%;bottom:35%;animation-delay:5s;opacity:.6}
+  .gp6{width:2px;height:2px;left:25%;bottom:45%;animation-delay:1.8s;opacity:.5}
+  .gp7{width:3px;height:3px;left:65%;bottom:15%;animation-delay:4.2s;opacity:.6}
+  @keyframes particleUp{
+    0%{transform:translateY(0) scale(1);opacity:.6}
+    50%{opacity:.8}
+    100%{transform:translateY(-200px) scale(0);opacity:0}
+  }
+
+  @keyframes orbFloat{
+    0%,100%{transform:translate(0,0) scale(1)}
+    33%{transform:translate(30px,-40px) scale(1.1)}
+    66%{transform:translate(-20px,30px) scale(.9)}
+  }
+
+  /* scanline overlay */
+  .scanlines{
+    position:fixed;inset:0;z-index:10;pointer-events:none;
+    background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);
+  }
+
+  /* === CARD === */
+  .card{
+    position:relative;z-index:5;
+    max-width:520px;width:92%;
+    padding:52px 40px 44px;
+    text-align:center;
+    background:var(--card-bg);
+    border:1px solid rgba(0,240,255,.15);
+    clip-path:polygon(0 16px,16px 0,calc(100% - 16px) 0,100% 16px,100% calc(100% - 16px),calc(100% - 16px) 100%,16px 100%,0 calc(100% - 16px));
+    animation:cardIn .8s ease-out;
+  }
+  /* corner accents */
+  .card::before,.card::after{
+    content:'';position:absolute;width:24px;height:24px;
+    border-color:var(--cyan);border-style:solid;
+  }
+  .card::before{top:6px;left:6px;border-width:2px 0 0 2px}
+  .card::after{bottom:6px;right:6px;border-width:0 2px 2px 0}
+  @keyframes cardIn{
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* glitch border pulse */
+  .card-border{
+    position:absolute;inset:-1px;z-index:-1;
+    clip-path:polygon(0 16px,16px 0,calc(100% - 16px) 0,100% 16px,100% calc(100% - 16px),calc(100% - 16px) 100%,16px 100%,0 calc(100% - 16px));
+    background:linear-gradient(135deg,var(--cyan),var(--magenta),var(--neon-green));
+    opacity:.4;animation:borderPulse 3s infinite ease-in-out;
+  }
+  @keyframes borderPulse{0%,100%{opacity:.3}50%{opacity:.7}}
+
+  /* === AI ICON === */
+  .ai-icon{
+    width:100px;height:100px;margin:0 auto 24px;position:relative;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .ai-icon svg{width:56px;height:56px;filter:drop-shadow(0 0 12px var(--cyan))}
+  .ai-ring{
+    position:absolute;inset:0;border:2px solid transparent;border-radius:50%;
+    border-top-color:var(--cyan);border-right-color:var(--magenta);
+    animation:spin 4s linear infinite;
+  }
+  .ai-ring:nth-child(2){
+    inset:8px;border-top-color:var(--magenta);border-right-color:var(--neon-green);
+    animation-duration:3s;animation-direction:reverse;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* === NAME with glitch === */
+  .name{
+    font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;
+    letter-spacing:2px;line-height:1.2;margin-bottom:6px;
+    background:linear-gradient(90deg,var(--cyan),#fff,var(--magenta));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+    filter:drop-shadow(0 0 20px rgba(0,240,255,.5));
+    position:relative;
+    animation:glitchText 5s infinite;
+  }
+  @keyframes glitchText{
+    0%,92%,100%{transform:none;filter:drop-shadow(0 0 20px rgba(0,240,255,.5))}
+    93%{transform:translate(-2px,1px);filter:drop-shadow(2px 0 var(--magenta)) drop-shadow(-2px 0 var(--cyan))}
+    94%{transform:translate(2px,-1px)}
+    95%{transform:translate(-1px,2px)}
+    96%{transform:none}
+  }
+
+  .tagline{
+    font-family:'Rajdhani',sans-serif;
+    font-size:1rem;font-weight:500;color:var(--cyan);
+    letter-spacing:3px;text-transform:uppercase;
+    margin-bottom:28px;opacity:.8;
+  }
+
+  /* === SPECS as cyber-tags === */
+  .specs{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+    margin-bottom:28px;
+  }
+  .spec{
+    padding:7px 18px;font-size:.82rem;font-weight:600;
+    letter-spacing:.5px;text-transform:uppercase;
+    color:rgba(255,255,255,.7);
+    background:rgba(0,240,255,.05);
+    border:1px solid rgba(0,240,255,.2);
+    clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+    transition:all .3s;cursor:default;
+  }
+  .spec:hover{
+    background:rgba(0,240,255,.15);
+    border-color:var(--cyan);color:#fff;
+    box-shadow:0 0 16px rgba(0,240,255,.3),inset 0 0 16px rgba(0,240,255,.1);
+    transform:translateY(-2px);
+  }
+  .spec:nth-child(2):hover{border-color:var(--magenta);background:rgba(255,0,229,.12);box-shadow:0 0 16px rgba(255,0,229,.3)}
+  .spec:nth-child(3):hover{border-color:var(--neon-green);background:rgba(57,255,20,.1);box-shadow:0 0 16px rgba(57,255,20,.3)}
+  .spec:nth-child(4):hover{border-color:var(--magenta);background:rgba(255,0,229,.12);box-shadow:0 0 16px rgba(255,0,229,.3)}
+
+  /* === DIVIDER === */
+  .divider{
+    width:80%;height:1px;margin:0 auto 28px;position:relative;
+    background:linear-gradient(90deg,transparent,rgba(0,240,255,.4),rgba(255,0,229,.4),transparent);
+  }
+  .divider::after{
+    content:'';position:absolute;top:-2px;width:6px;height:6px;
+    background:var(--cyan);border-radius:50;
+    box-shadow:0 0 8px var(--cyan);
+    animation:divRun 3s linear infinite;
+  }
+  @keyframes divRun{0%{left:0}100%{left:100%}}
+
+  /* === TELEGRAM ICON === */
+  .socials{display:flex;justify-content:center;margin-bottom:28px}
+  .social-link{
+    width:54px;height:54px;
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;position:relative;
+    background:rgba(0,240,255,.06);
+    border:1px solid rgba(0,240,255,.25);
+    clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+    transition:all .35s;
+  }
+  .social-link:hover{
+    background:rgba(0,240,255,.2);
+    border-color:var(--cyan);
+    box-shadow:0 0 30px rgba(0,240,255,.4);
+    transform:scale(1.15) rotate(5deg);
+  }
+  .social-link svg{
+    width:24px;height:24px;fill:rgba(255,255,255,.7);
+    transition:all .3s;position:relative;z-index:1;
+  }
+  .social-link:hover svg{fill:#fff;filter:drop-shadow(0 0 6px var(--cyan))}
+
+  /* === CTA BUTTON === */
+  .cta-wrap{position:relative;display:inline-block;margin-bottom:0}
+  .cta{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:16px 40px;
+    font-family:'Orbitron',monospace;font-size:.85rem;font-weight:700;
+    letter-spacing:2px;text-transform:uppercase;
+    color:#fff;text-decoration:none;
+    background:linear-gradient(135deg,rgba(0,240,255,.15),rgba(255,0,229,.15));
+    border:1px solid var(--cyan);
+    clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
+    position:relative;overflow:hidden;
+    transition:all .35s;cursor:pointer;
+  }
+  .cta:hover{
+    background:linear-gradient(135deg,rgba(0,240,255,.3),rgba(255,0,229,.3));
+    border-color:#fff;
+    box-shadow:0 0 30px rgba(0,240,255,.4),0 0 60px rgba(255,0,229,.2);
+    transform:translateY(-3px);
+  }
+  .cta svg{width:20px;height:20px;fill:#fff;transition:transform .3s;position:relative;z-index:1}
+  .cta span{position:relative;z-index:1}
+  .cta:hover svg{transform:translateX(4px)}
+
+  /* shimmer sweep */
+  .cta::after{
+    content:'';position:absolute;top:0;left:-120%;
+    width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(0,240,255,.2),transparent);
+    transform:skewX(-20deg);
+    animation:shimmer 2.5s infinite;z-index:1;
+  }
+  @keyframes shimmer{0%{left:-120%}100%{left:220%}}
+
+  /* === DATA STREAM decoration === */
+  .data-stream{
+    margin-top:24px;font-family:'Courier New',monospace;
+    font-size:.65rem;color:rgba(0,240,255,.3);
+    letter-spacing:1px;overflow:hidden;
+    white-space:nowrap;
+  }
+  .data-stream span{
+    display:inline-block;
+    animation:scroll 20s linear infinite;
+  }
+  @keyframes scroll{
+    0%{transform:translateX(100%)}
+    100%{transform:translateX(-100%)}
+  }
+
+  .footer{
+    margin-top:20px;font-size:.7rem;
+    color:rgba(255,255,255,.15);letter-spacing:1px;
+  }
+
+  /* === RESPONSIVE === */
+  @media(max-width:500px){
+    .card{padding:36px 20px 32px}
+    .name{font-size:1.4rem;letter-spacing:1px}
+    .tagline{font-size:.8rem;letter-spacing:2px}
+    .ai-icon{width:80px;height:80px}
+    .ai-icon svg{width:44px;height:44px}
+    .spec{font-size:.72rem;padding:6px 14px}
+    .social-link{width:48px;height:48px}
+    .cta{padding:14px 28px;font-size:.75rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="cyber-bg">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="skyline"></div>
+  <div class="horizon"></div>
+  <!-- gold abstract geometry -->
+  <div class="gold-shape gold-1"><svg viewBox="0 0 200 200"><polygon points="100,10 190,60 170,160 30,160 10,60" fill="none" stroke="#ffd700" stroke-width=".5" opacity=".6"/><polygon points="100,40 160,70 145,140 55,140 40,70" fill="none" stroke="#b8860b" stroke-width=".3" opacity=".4"/></svg></div>
+  <div class="gold-shape gold-2"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="none" stroke="#ffd700" stroke-width=".5" opacity=".5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#ffd700" stroke-width=".3" opacity=".3"/><line x1="20" y1="100" x2="180" y2="100" stroke="#b8860b" stroke-width=".3" opacity=".3"/><line x1="100" y1="20" x2="100" y2="180" stroke="#b8860b" stroke-width=".3" opacity=".3"/></svg></div>
+  <div class="gold-shape gold-3"><svg viewBox="0 0 200 200"><rect x="30" y="30" width="140" height="140" fill="none" stroke="#ffd700" stroke-width=".5" opacity=".5" transform="rotate(15 100 100)"/><rect x="55" y="55" width="90" height="90" fill="none" stroke="#b8860b" stroke-width=".3" opacity=".3" transform="rotate(30 100 100)"/></svg></div>
+  <!-- gold particles -->
+  <div class="gold-particle gp1"></div>
+  <div class="gold-particle gp2"></div>
+  <div class="gold-particle gp3"></div>
+  <div class="gold-particle gp4"></div>
+  <div class="gold-particle gp5"></div>
+  <div class="gold-particle gp6"></div>
+  <div class="gold-particle gp7"></div>
+</div>
+<div class="scanlines"></div>
+
+<!-- Card -->
+<div class="card">
+  <div class="card-border"></div>
+
+  <!-- AI brain icon with spinning rings -->
+  <div class="ai-icon">
+    <div class="ai-ring"></div>
+    <div class="ai-ring"></div>
+    <svg viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="10" stroke="url(#cg)" stroke-width="2"/>
+      <circle cx="32" cy="32" r="3" fill="var(--cyan)"/>
+      <line x1="32" y1="22" x2="32" y2="8" stroke="var(--cyan)" stroke-width="1.5"/>
+      <line x1="32" y1="42" x2="32" y2="56" stroke="var(--cyan)" stroke-width="1.5"/>
+      <line x1="22" y1="32" x2="8" y2="32" stroke="var(--cyan)" stroke-width="1.5"/>
+      <line x1="42" y1="32" x2="56" y2="32" stroke="var(--cyan)" stroke-width="1.5"/>
+      <line x1="25" y1="25" x2="14" y2="14" stroke="var(--magenta)" stroke-width="1"/>
+      <line x1="39" y1="25" x2="50" y2="14" stroke="var(--magenta)" stroke-width="1"/>
+      <line x1="25" y1="39" x2="14" y2="50" stroke="var(--magenta)" stroke-width="1"/>
+      <line x1="39" y1="39" x2="50" y2="50" stroke="var(--magenta)" stroke-width="1"/>
+      <circle cx="32" cy="8" r="3" fill="var(--cyan)"/>
+      <circle cx="32" cy="56" r="3" fill="var(--cyan)"/>
+      <circle cx="8" cy="32" r="3" fill="var(--cyan)"/>
+      <circle cx="56" cy="32" r="3" fill="var(--cyan)"/>
+      <circle cx="14" cy="14" r="2.5" fill="var(--magenta)"/>
+      <circle cx="50" cy="14" r="2.5" fill="var(--magenta)"/>
+      <circle cx="14" cy="50" r="2.5" fill="var(--magenta)"/>
+      <circle cx="50" cy="50" r="2.5" fill="var(--magenta)"/>
+      <defs><linearGradient id="cg" x1="22" y1="22" x2="42" y2="42"><stop stop-color="var(--cyan)"/><stop offset="1" stop-color="var(--magenta)"/></linearGradient></defs>
+    </svg>
+  </div>
+
+  <h1 class="name">Елена Ковалева</h1>
+  <p class="tagline">Digital Marketing &amp; AI Solutions</p>
+
+  <div class="specs">
+    <span class="spec">Продвижение в сети</span>
+    <span class="spec">Маркетинг</span>
+    <span class="spec">Реклама в соцсетях</span>
+    <span class="spec">ИИ Ассистенты</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Telegram -->
+  <div class="socials">
+    <a href="https://t.me/actmarketing" target="_blank" rel="noopener" class="social-link" title="Telegram">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 1 0 24 12.056 12.01 12.01 0 0 0 11.944 0Zm5.654 8.22-1.7 8.01c-.127.6-.468.746-.948.464l-2.62-1.932-1.264 1.217a.658.658 0 0 1-.526.257l.188-2.669 4.86-4.39c.21-.188-.046-.293-.328-.105l-6.01 3.784-2.588-.808c-.562-.176-.574-.562.117-.832l10.117-3.9c.468-.17.878.114.726.832Z"/></svg>
+    </a>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://t.me/actmarketing" target="_blank" rel="noopener" class="cta">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 1 0 24 12.056 12.01 12.01 0 0 0 11.944 0Zm5.654 8.22-1.7 8.01c-.127.6-.468.746-.948.464l-2.62-1.932-1.264 1.217a.658.658 0 0 1-.526.257l.188-2.669 4.86-4.39c.21-.188-.046-.293-.328-.105l-6.01 3.784-2.588-.808c-.562-.176-.574-.562.117-.832l10.117-3.9c.468-.17.878.114.726.832Z"/></svg>
+      <span>Написать мне</span>
+    </a>
+  </div>
+
+  <!-- Data stream decoration -->
+  <div class="data-stream">
+    <span>/// MARKETING :: AI_ASSISTANT :: NEURAL_ADS :: SOCIAL_BOOST :: DIGITAL_STRATEGY :: TARGET_REACH :: CONVERSION_UP ///</span>
+  </div>
+
+  <p class="footer">&copy; 2026 КОВАЛЕВА.DIGITAL</p>
+</div>
+
+</body>
+</html>
