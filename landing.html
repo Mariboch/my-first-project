@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdCostCalc — расчёт стоимости рекламы в соцсетях</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1035 40%, #0d1f3c 70%, #0a0a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border: 1px solid rgba(130, 100, 255, 0.4);
+            border-radius: 20px;
+            font-size: 14px;
+            color: #a78bfa;
+            margin-bottom: 28px;
+            background: rgba(130, 100, 255, 0.08);
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2.5vw, 20px);
+            line-height: 1.7;
+            color: #a0aec0;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* --- Advantages Cards --- */
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 36px 28px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .card:nth-child(1) { animation: fadeUp 0.7s 0.2s ease forwards; }
+        .card:nth-child(2) { animation: fadeUp 0.7s 0.4s ease forwards; }
+        .card:nth-child(3) { animation: fadeUp 0.7s 0.6s ease forwards; }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(130, 100, 255, 0.3);
+            box-shadow: 0 8px 40px rgba(130, 100, 255, 0.1);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .card:nth-child(1) .card-icon { background: rgba(52, 211, 153, 0.12); }
+        .card:nth-child(2) .card-icon { background: rgba(96, 165, 250, 0.12); }
+        .card:nth-child(3) .card-icon { background: rgba(167, 139, 250, 0.12); }
+
+        .card-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #f0f0f0;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: #8896a8;
+        }
+
+        /* --- For Whom Section --- */
+        .for-whom {
+            max-width: 800px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s 0.8s ease forwards;
+        }
+
+        .for-whom-box {
+            background: linear-gradient(135deg, rgba(130, 100, 255, 0.06), rgba(96, 165, 250, 0.06));
+            border: 1px solid rgba(130, 100, 255, 0.15);
+            border-radius: 16px;
+            padding: 40px 36px;
+        }
+
+        .for-whom h2 {
+            font-size: clamp(22px, 4vw, 28px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .for-whom ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .for-whom li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #a0aec0;
+        }
+
+        .for-whom li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+        }
+
+        .for-whom .benefit {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: rgba(52, 211, 153, 0.06);
+            border-left: 3px solid #34d399;
+            border-radius: 0 10px 10px 0;
+            font-size: 15px;
+            line-height: 1.65;
+            color: #a0aec0;
+        }
+
+        .for-whom .benefit strong {
+            color: #34d399;
+        }
+
+        /* --- CTA Section --- */
+        .cta {
+            text-align: center;
+            padding: 20px 20px 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s 1s ease forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 48px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #7c3aed, #6366f1, #3b82f6);
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: pulse 2.5s infinite;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .cta-link {
+            display: block;
+            margin-top: 18px;
+            color: #60a5fa;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .cta-link:hover {
+            color: #a78bfa;
+            text-decoration: underline;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.5); }
+            50% { box-shadow: 0 0 0 14px rgba(99, 102, 241, 0); }
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 640px) {
+            .hero { padding: 60px 16px 40px; }
+            .advantages { gap: 16px; padding: 0 16px; }
+            .card { padding: 28px 22px; }
+            .for-whom-box { padding: 28px 22px; }
+            .cta-button { padding: 16px 36px; font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">Калькулятор рекламы</div>
+        <h1>AdCostCalc</h1>
+        <p>Инструмент, который помогает рассчитать стоимость рекламы, спланировать бюджет и оценить затраты на настройку и ведение рекламных кампаний в социальных сетях.</p>
+    </section>
+
+    <!-- Advantages -->
+    <section class="advantages">
+        <div class="card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/>
+                    <path d="M16 8h-4v8"/>
+                    <path d="M8 12h8"/>
+                </svg>
+            </div>
+            <h3>Экономит деньги</h3>
+            <p>Позволяет заранее понять реальные расходы и избежать лишних трат на рекламу. Вы точно знаете, куда идёт каждый рубль.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="16" rx="2"/>
+                    <path d="M7 8h4"/>
+                    <path d="M7 12h10"/>
+                    <path d="M7 16h6"/>
+                </svg>
+            </div>
+            <h3>Упрощает планирование</h3>
+            <p>Быстро считает бюджет без сложных таблиц и формул. Несколько кликов — и план готов.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+            </div>
+            <h3>Помогает принимать решения</h3>
+            <p>Наглядно показывает, сколько стоит запуск и ведение рекламы, чтобы вы могли действовать уверенно.</p>
+        </div>
+    </section>
+
+    <!-- For Whom -->
+    <section class="for-whom">
+        <div class="for-whom-box">
+            <h2>Для кого подходит</h2>
+            <ul>
+                <li><strong>Предпринимателям</strong> — которые хотят продвигать бизнес в соцсетях, но не знают, сколько это стоит</li>
+                <li><strong>Маркетологам</strong> — которым нужно быстро рассчитать бюджет кампании для клиента или руководства</li>
+                <li><strong>Фрилансерам и SMM-специалистам</strong> — чтобы прозрачно показывать клиентам стоимость услуг</li>
+                <li><strong>Стартапам</strong> — для точного планирования расходов на продвижение с ограниченным бюджетом</li>
+            </ul>
+            <div class="benefit">
+                <strong>Почему это выгодно:</strong> вы перестаёте тратить время на ручные расчёты и догадки. AdCostCalc даёт чёткую картину расходов за минуту — это значит меньше ошибок, быстрее запуск и больше контроля над бюджетом.
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <a class="cta-button" href="https://t.me/actmarketing" target="_blank" rel="noopener">Рассчитать стоимость рекламы</a>
+        <a class="cta-link" href="https://t.me/actmarketing" target="_blank" rel="noopener">Написать нам в Telegram &rarr;</a>
+    </section>
+
+</body>
+</html>
